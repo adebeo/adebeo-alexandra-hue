@@ -25,7 +25,9 @@ module AdebeoHueOption
   			
     			lesLignesQuiSontlueS.each {|lignelue|
     			  valeurLuelues = lignelue.to_s().strip.split("=")
-    			  @@options[valeurLuelues[0].to_sym][:defauls] = valeurLuelues[1]
+    			  if valeurLuelues.length > 1
+    			    @@options[valeurLuelues[0].to_sym][:defauls] = valeurLuelues[1]
+    			  end
     			}
 
     			doit =false     
@@ -63,7 +65,7 @@ module AdebeoHueOption
   				  end
   				  pageoption+= indexValeurPardefaut.to_s
   				  pageoption+= "
-  "
+"
   				  n+=1
   				}
   				pageoptionfile=File.new(mpath,"w")
